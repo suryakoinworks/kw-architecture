@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = ".;grpc";
+
+message Message {
+  string to = 1;
+  repeated Param params = 2;
+}
+
+message Param {
+    string key = 1;
+    string value = 2;
+}
+
+message Status {
+    int32 code = 1;
+    string message = 2;
+}
+
+service Sms {
+    rpc Register(Message) returns (Status) {}
+    rpc Funding(Message) returns (Status) {}
+}
